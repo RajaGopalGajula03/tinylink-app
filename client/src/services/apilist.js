@@ -1,4 +1,4 @@
-const server = "http://localhost:8080";
+const server = process.env.TinyLink_APP_BACKEND_URL ||"http://localhost:8080";
 
 export const apilist = {
     post_links:`${server}/api/links`,
