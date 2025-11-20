@@ -10,3 +10,4 @@ export const apilist = {
     redirect_link:(code)=>`${server}/${code}`,
     healthz_link:`${server}/healthz`
 }
+console.log("Backend server url:",server);
