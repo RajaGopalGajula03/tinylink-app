@@ -5,23 +5,11 @@ require("dotenv").config();
 
 
 const app = express();
-const allowedOrigins = [
-    "https://tinylink-app1.onrender.com", // your frontend URL
-    "http://localhost:3000"               // local dev
-];
 
 app.use(cors({
-    origin: function(origin, callback){
-        // allow requests with no origin (like curl, postman)
-        if(!origin) return callback(null, true);
-        if(allowedOrigins.indexOf(origin) === -1){
-            const msg = `The CORS policy for this site does not allow access from the specified Origin.`;
-            return callback(new Error(msg), false);
-        }
-        return callback(null, true);
-    },
-    methods: ["GET", "POST", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"]
+  origin: 'https://tinylink-app1.onrender.com', // frontend URL
+  methods: ['GET', 'POST', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 
 app.use(express.json());
