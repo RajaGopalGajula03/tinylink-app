@@ -53,6 +53,7 @@ console.log("API URL:", apilist.get_links);
             setLinks(res.data);
             setFilteredLinks(res.data);
         } catch (err) {
+            console.log("error",err)
             setGlobalError("⚠ Unable to fetch links. Check backend.");
         }
         setLoading(false);
