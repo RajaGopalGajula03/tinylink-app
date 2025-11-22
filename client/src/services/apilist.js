@@ -1,7 +1,9 @@
 
 
-const server = process.env.REACT_APP_BACKEND_URL ||"http://localhost:8080";
+const server = "http://localhost:8080";
 
+
+// const server = process.env.REACT_APP_BACKEND_URL;
 export const apilist = {
     post_links:`${server}/api/links`,
     get_links:`${server}/api/links`,
@@ -10,4 +12,4 @@ export const apilist = {
     redirect_link:(code)=>`${server}/${code}`,
     healthz_link:`${server}/healthz`
 }
-console.log("Backend server url:",server);
+console.log("REACT_APP_BACKEND_URL:", process.env.REACT_APP_BACKEND_URL);

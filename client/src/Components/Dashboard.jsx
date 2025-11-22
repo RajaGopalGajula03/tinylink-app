@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { apilist } from "../services/apilist";
 import axios from "axios";
 import { Link } from "react-router-dom";
+console.log("Dashboard loaded!");
 
 export default function Dashboarrd() {
     const [links, setLinks] = useState([]);
@@ -24,6 +25,7 @@ export default function Dashboarrd() {
     const [sortOrder, setSortOrder] = useState("desc");
 
 
+console.log("API URL:", apilist.get_links);
 
 
     const validateUrl = (value) => {
@@ -54,7 +56,7 @@ export default function Dashboarrd() {
             setGlobalError("⚠ Unable to fetch links. Check backend.");
         }
         setLoading(false);
-    };
+    }; 
 
     useEffect(() => {
         fetchLinks();

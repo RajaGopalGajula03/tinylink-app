@@ -6,37 +6,15 @@ require("dotenv").config();
 
 const app = express();
 
-const allowedOrigins = [
-  'https://tinylink-app-1-e34u.onrender.com', // frontend URL
-  'http://localhost:3000'                     // local dev
-];
-
-app.use(cors({
-  origin: function(origin, callback) {
-    // allow requests with no origin (e.g., Postman, server-to-server)
-    if (!origin) return callback(null, true);
-    
-    if (allowedOrigins.indexOf(origin) === -1) {
-      const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
-      return callback(new Error(msg), false);
-    }
-
-    return callback(null, true);
-  },
-  methods: ['GET', 'POST', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
-
-// make sure preflight requests are handled
-// app.options('*', cors());
-
-
-
+app.use(cors());
 app.use(express.json());
 
- 
+
+
 const port = process.env.PORT || 8080;
 const startTime = Date.now();
+
+app.use(express.json())
 
 
 //DB Initialization
@@ -48,9 +26,10 @@ const pool = new Pool({
     }
 });
 
-pool.connect()
+pool.query("SELECT 1")
     .then(() => console.log("Connected to Neon PostgreSQL"))
-    .catch(err => console.log("DB Connection error:", err));
+    .catch(err => console.error("DB Connection error:", err));
+
 
 // Validation
 
